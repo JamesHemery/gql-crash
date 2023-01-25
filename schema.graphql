@@ -1,0 +1,27 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+scalar UUID
+
+type Query {
+  "Find a single ad by an identifying attribute."
+  ad(
+    "Search by public id."
+    id: UUID
+  ): Ad
+}
+
+type Ad {
+  id: UUID!
+  history: [HistoryEntry]
+}
+
+type HistoryEntry {
+  description: String!
+}
+
+type Mutation {
+      createOrder(input: Ad): Ad
+}
